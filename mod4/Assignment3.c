@@ -45,15 +45,15 @@ int main(void) {
    
    if (strcmp(strCat, oil) == 0) {                               
       printf("You entered: %s\n", oil);
-      printf("Cost of oil change: %d\n", oilPrice);
+      printf("Cost of oil change: $%d\n", oilPrice);
    }
    else if (strcmp(strCat, tire) == 0) {
       printf("You entered: %s\n", tire);
-      printf("Cost of tire rotation: %d\n", rotationPrice);
+      printf("Cost of tire rotation: $%d\n", rotationPrice);
    }
    else if (strcmp(strCat, wash) == 0) {
       printf("You entered: %s\n", wash);
-      printf("Cost of car wash: %d\n", washPrice);
+      printf("Cost of car wash: $%d\n", washPrice);
    }
    else {
       printf("Error: Requested service is not recognized\n");
@@ -61,5 +61,4 @@ int main(void) {
 
    return 0;
 }
-
 
