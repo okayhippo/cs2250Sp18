@@ -25,9 +25,9 @@
 // Main Function
 
 int main(void) {
-   char serviceP1[5];
-   char serviceP2[9];
-   char strCat[21];
+   char serviceP1[21];
+   char serviceP2[21];
+   char strCat[51];
    char oil[] = "Oil change";
    char tire[] = "Tire rotation";
    char wash[] = "Car wash";
@@ -56,6 +56,7 @@ int main(void) {
       printf("Cost of car wash: $%d\n", washPrice);
    }
    else {
+      printf("You entered: %s\n", strCat);
       printf("Error: Requested service is not recognized\n");
    }
 
