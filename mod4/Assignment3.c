@@ -16,32 +16,50 @@
  * =====================================================================================
  */
 #include <stdio.h>
+#include <string.h>
 
 // Constants
 
 // Function Prototypes
 
 // Main Function
-int main()
-{
-    char autoService[21];
-       char oil[] = "oil change";
-          char tire[] = "tire rotation";
-             char wash[] = "car wash";
 
-                printf("Oil change --\t$35\n");
-                   printf("Tire rotation --\t$19\n");
-                      printf("Car wash --\t%7");
+int main(void) {
+   char serviceP1[21];
+   char serviceP2[21];
+   char strCat[51];
+   char oil[] = "Oil change";
+   char tire[] = "Tire rotation";
+   char wash[] = "Car wash";
+   
+   int oilPrice = 35;
+   int rotationPrice = 19;
+   int washPrice = 7;
 
-                         printf("Enter your desired auto service:\n");
-                            scanf("%s", autoService);
-                               
-                               if (tolower(autoService) == 
-                                          
-                                          printf("You entered: %s");
+   printf("Enter desired auto service:\n");
+   scanf("%s %s", serviceP1, serviceP2);
+   strcpy(strCat, serviceP1);
+   strcat(strCat, " ");
+   strcat(strCat, serviceP2);
+   
+   
+   if (strcmp(strCat, oil) == 0) {                               
+      printf("You entered: %s\n", oil);
+      printf("Cost of oil change: $%d\n", oilPrice);
+   }
+   else if (strcmp(strCat, tire) == 0) {
+      printf("You entered: %s\n", tire);
+      printf("Cost of tire rotation: $%d\n", rotationPrice);
+   }
+   else if (strcmp(strCat, wash) == 0) {
+      printf("You entered: %s\n", wash);
+      printf("Cost of car wash: $%d\n", washPrice);
+   }
+   else {
+      printf("You entered: %s\n", strCat);
+      printf("Error: Requested service is not recognized\n");
+   }
 
-    return 0;
+   return 0;
 }
-// Function Definitions
-
 
