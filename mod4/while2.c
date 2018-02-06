@@ -25,11 +25,25 @@
 int main()
 {
     int num = 2;
+    int age = 21;
     
     while (num) {
         printf("Num [%d]\n", num);
         num--;
     }
+    
+    // This type of loop REQUIRES a break statement
+    while (1) {
+        if (age == 0) {
+            printf("Thank you\n");
+            break;
+        }
+
+        printf("Your age is [%d]\n", age);
+        age--;
+    }
+
+    printf("Done\n");
 
     return 0;
 }
