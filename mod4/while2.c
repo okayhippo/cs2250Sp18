@@ -28,6 +28,7 @@ int main()
     
     while (num) {
         printf("Num [%d]\n", num);
+        num--;
     }
 
     return 0;
