@@ -30,11 +30,11 @@ int main()
     int totalArrowHeight;
     
     printf("Enter arrow base height:\n");
-    scanf("%d", arrowBaseHeight);
+    scanf("%d", &arrowBaseHeight);
     printf("Enter arrow base width:\n");
-    scanf("%d", arrowBaseWidth);
+    scanf("%d", &arrowBaseWidth);
     printf("Enter arrow head width:\n");
-    scanf("%d", arrowHeadWidth);
+    scanf("%d", &arrowHeadWidth);
 
     totalArrowHeight = arrowHeadWidth + arrowBaseHeight;
 
@@ -53,12 +53,11 @@ int main()
 
 
         // Print arrow head
-        for (int i = 1; i <= arrowHeadWidth; i++) {
-            
+        for (int i = arrowHeadWidth; i > 0; i--) {
             for (int j = arrowHeadWidth; j > 0; j--) {
                 printf("*");
             }
-
+            
             printf("\n");
 
         }
