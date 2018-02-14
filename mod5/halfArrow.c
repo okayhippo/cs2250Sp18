@@ -27,41 +27,41 @@ int main()
     int arrowBaseHeight;
     int arrowBaseWidth;
     int arrowHeadWidth;
-    int totalArrowHeight;
+    int i;
+    int j;
     
     printf("Enter arrow base height:\n");
     scanf("%d", &arrowBaseHeight);
     printf("Enter arrow base width:\n");
     scanf("%d", &arrowBaseWidth);
-    printf("Enter arrow head width:\n");
-    scanf("%d", &arrowHeadWidth);
+    do {
+        printf("Enter arrow head width:\n");
+        scanf("%d", &arrowHeadWidth);
 
-    totalArrowHeight = arrowHeadWidth + arrowBaseHeight;
+        if (arrowHeadWidth <= arrowBaseWidth) {
+            printf("Invalid entry... Please try again\n\n");
+        }
+    }while(arrowHeadWidth <= arrowBaseWidth);
 
     // Print arrow base
-    for (int i = 1; i <= totalArrowHeight; i++) {
+    for ( i = 1; i <= arrowBaseHeight; i++) {
+
+        for (j = 1; j <= arrowBaseWidth; j++) {
+            printf("*");
+        }
+
+        printf("\n");
+    }
+
+
+    // Print arrow head
+    for (i = arrowHeadWidth; i > 0; i--) {
         
-        for (int j = 1; j <= arrowBaseHeight; j++) {
-            
-            for (int k = 1; k <= arrowBaseWidth; k++) {
-                printf("*");
-            }
-
-            printf("\n");
-
+        for (j = 0; j < i; j++) {
+            printf("*");
         }
 
-
-        // Print arrow head
-        for (int i = arrowHeadWidth; i > 0; i--) {
-            for (int j = arrowHeadWidth; j > 0; j--) {
-                printf("*");
-            }
-            
-            printf("\n");
-
-        }
-
+        printf("\n");
     }
 
     return 0;
