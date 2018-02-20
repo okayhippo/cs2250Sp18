@@ -109,20 +109,50 @@ int main()
         // OUTPUT ABOVE RATING
         else if (menuChoice == 'a') {
             int timesRun = 1;
-            int above;
+            int playerRating;
 
+            printf("\n\n");
             printf("Enter a rating:\n");
             scanf("%d", &playerRating);
+            
+            printf("ABOVE %d", playerRating);
 
             // Check for player ratings
             for (int i = 0; i < LEN; i++) {
-                if (rating[i] > above) {
+                if (rating[i] > playerRating) {
                     printf("Player %d -- Jersey number: %d, Rating: %d", timesRun, jersey[i], rating[i]);
                 }
 
                 timesRun++;
             }
         } // end output above
+
+
+        // REPLACE PLAYER
+        else if (menuChoice == 'r') {
+            int jerseyNum;
+
+            printf("\n\n");
+            printf("Enter a jersey number:\n");
+            scanf("%d", &jerseyNum);
+
+            // Loop to find jersey num
+            for (int i = 0; i < LEN; i++) {
+                
+                // Check for number
+                if (jerseyNum == jersey[i]) {
+                    printf("Enter a new jersey number:\n");
+                    scanf("%d", &jersey[i]);
+
+                    printf("Enter a rating for the new player:\n");
+                    scanf("%d", &rating[i]);
+                }
+                else if (jerseyNum != jersey[LEN - 1]) {
+                    printf("Jersey number does not match any known players\n");
+                    continue;
+                }
+            }
+        }
 
     } while (menuChoice != 'q');
 
