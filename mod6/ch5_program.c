@@ -118,7 +118,7 @@ int main()
             // Check for player ratings
             for (int i = 0; i < LEN; i++) {
                 if (rating[i] > playerRating) {
-                    printf("Player %d -- Jersey number: %d, Rating: %d", timesRun, jersey[i], rating[i]);
+                    printf("Player %d -- Jersey number: %d, Rating: %d\n", timesRun, jersey[i], rating[i]);
                 }
 
                 timesRun++;
