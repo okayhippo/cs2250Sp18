@@ -50,7 +50,6 @@ int main()
         numPlayer++;
     }
 
-    printf("\n\n");
     printf("ROSTER\n");
     for (int i = 0; i < LEN; i++) {
         printf("Player %d -- Jersey number: %d, Rating: %d\n", i + 1, jersey[i], rating[i]);
@@ -59,19 +58,18 @@ int main()
     
     do {
         // Menu
-        printf("\n\n");
+        printf("\n");
         printf("MENU\n");
         printf("u - Update player rating\n");
         printf("a - Output players above a rating\n");
         printf("r - Replace player\n");
         printf("o - Output roster\n");
         printf("q - Quit\n\n");
-        printf("Choose and option:\n");
+        printf("Choose an option:\n");
         scanf(" %c", &menuChoice);
 
         // OUTPUT ROSTER
         if (menuChoice == 'o') {
-            printf("\n\n");
             printf("ROSTER\n");
             for (int i = 0; i < LEN; i++) {
                 printf("Player %d -- Jersey number: %d, Rating: %d\n", i + 1, jersey[i], rating[i]);
@@ -115,7 +113,7 @@ int main()
             printf("Enter a rating:\n");
             scanf("%d", &playerRating);
             
-            printf("ABOVE %d", playerRating);
+            printf("ABOVE %d\n", playerRating);
 
             // Check for player ratings
             for (int i = 0; i < LEN; i++) {
