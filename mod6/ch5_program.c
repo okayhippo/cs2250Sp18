@@ -78,7 +78,7 @@ int main()
         
         // UPDATE RATING
         else if (menuChoice == 'u') {
-            printf("\n\n");
+            printf("\n");
             printf("Enter a jersey number:\n");
             scanf("%d", &menuJersey);
             
@@ -109,7 +109,7 @@ int main()
             int timesRun = 1;
             int playerRating;
 
-            printf("\n\n");
+            printf("\n");
             printf("Enter a rating:\n");
             scanf("%d", &playerRating);
             
@@ -130,7 +130,7 @@ int main()
         else if (menuChoice == 'r') {
             int jerseyNum;
 
-            printf("\n\n");
+            printf("\n");
             printf("Enter a jersey number:\n");
             scanf("%d", &jerseyNum);
 
