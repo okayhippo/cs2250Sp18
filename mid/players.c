@@ -17,6 +17,8 @@
  * =====================================================================================
  */
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 // Constants
 const int LEN = 5;
@@ -26,6 +28,9 @@ void InitPlayers(int jersey[], int rating[]);
 void ShowPlayers( int jersey[], int rating[]);
 char PrintMenu();
 void UpdatePlayer(int jersey[], int rating[]);
+void OutputAbove(int jersey[], int rating[]);
+void ReplacePlayer(int jersey[], int rating[]);
+void InitRandPlayers(int jersey[], int rating[]);
 
 // Main Function
 int main()
@@ -35,77 +40,35 @@ int main()
     int rating[LEN];
     char menuChoice;
 
-    InitPlayers(jersey, rating);
+    InitRandPlayers(jersey, rating);
     ShowPlayers(jersey, rating);
-    
-    
+
     
     do {
         // Menu
         menuChoice = PrintMenu();
-
         // OUTPUT ROSTER
         if (menuChoice == 'o') {
             ShowPlayers(jersey, rating);
         }
-        
         // UPDATE RATING
         else if (menuChoice == 'u') {
             UpdatePlayer(jersey, rating);
-        } // end update rating
-
+        }
         // OUTPUT ABOVE RATING
         else if (menuChoice == 'a') {
-            int timesRun = 1;
-            int playerRating;
-
-            printf("\n");
-            printf("Enter a rating:\n");
-            scanf("%d", &playerRating);
-            
-            printf("ABOVE %d\n", playerRating);
-
-            // Check for player ratings
-            for (int i = 0; i < LEN; i++) {
-                if (rating[i] > playerRating) {
-                    printf("Player %d -- Jersey number: %d, Rating: %d\n", timesRun, jersey[i], rating[i]);
-                }
-
-                timesRun++;
-            }
-        } // end output above
-
-
+            OutputAbove(jersey, rating);
+        }
         // REPLACE PLAYER
         else if (menuChoice == 'r') {
-            int jerseyNum;
-
-            printf("\n");
-            printf("Enter a jersey number:\n");
-            scanf("%d", &jerseyNum);
-
-            // Loop to find jersey num
-            for (int i = 0; i < LEN; i++) {
-                
-                // Check for number
-                if (jerseyNum == jersey[i]) {
-                    printf("Enter a new jersey number:\n");
-                    scanf("%d", &jersey[i]);
-
-                    printf("Enter a rating for the new player:\n");
-                    scanf("%d", &rating[i]);
-                }
-                else if (jerseyNum != jersey[LEN - 1]) {
-                    printf("Jersey number does not match any known players\n");
-                    continue;
-                }
-            }
+           ReplacePlayer(jersey, rating);
         }
-
     } while (menuChoice != 'q');
 
     return 0;
 }
+
+
 // Function Definitions
 
 // FUNC: InitPlayers
@@ -189,12 +152,86 @@ void UpdatePlayer(int jersey[], int rating[]) {
                 printf("Invalid rating entry. Please enter a number between 1 and 9\n");
                 scanf("%d", &rating[i]);
             }
+
+            return;
+
         }
 
-        // No matching jersey jersey
-        else if (menuJersey != jersey[LEN - 1]) {
-            printf("There is no jersey with this number\n");
+    }
+
+    // No matching jersey jersey
+    if (menuJersey != jersey[LEN - 1]) {
+        printf("There is no jersey with this number\n");
+    }
+
+}
+
+// FUNC: OuputAbove
+// Output players above a given rating
+// RET: void
+void OutputAbove(int jersey[], int rating[]) {
+    int timesRun = 1;
+    int playerRating;
+
+    printf("\n");
+    printf("Enter a rating:\n");
+    scanf("%d", &playerRating);
+
+    printf("ABOVE %d\n", playerRating);
+
+    // Check for player ratings
+    for (int i = 0; i < LEN; i++) {
+        if (rating[i] > playerRating) {
+            printf("Player %d -- Jersey number: %d, Rating: %d\n", timesRun, jersey[i], rating[i]);
         }
 
+        timesRun++;
+    }
+
+    return;
+
+}
+
+// FUNC: ReplacePlayer
+// replaces player if number exists
+// RET: void
+void ReplacePlayer(int jersey[], int rating[]) {
+    int jerseyNum;
+
+    printf("\n");
+    printf("Enter a jersey number:\n");
+    scanf("%d", &jerseyNum);
+
+    // Loop to find jersey num
+    for (int i = 0; i < LEN; i++) {
+
+        // Check for number
+        if (jerseyNum == jersey[i]) {
+            printf("Enter a new jersey number:\n");
+            scanf("%d", &jersey[i]);
+
+            printf("Enter a rating for the new player:\n");
+            scanf("%d", &rating[i]);
+        }
+    }
+
+
+    if (jerseyNum != jersey[LEN -1]) {
+        printf("Jersey number does not match any known players\n");
+    }
+
+    return;
+
+}
+
+// FUNC: InitRandPlayers
+// Initialize players to random values
+// RET: void
+void InitRandPlayers(int jersey[], int rating[]) {
+    srand((int)time(0));
+
+    for (int i = 0; i < LEN; i++) {
+        jersey[i] = rand() % 99 + 1;
+        rating[i] = rand() % 9 + 1;
     }
 }
