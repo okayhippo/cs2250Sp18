@@ -31,10 +31,10 @@ int main()
 {
     char userString[MAX];
 
-    printf("Enter a sentence or phrase: ");
+    printf("Enter a sentence or phrase:\n");
     fgets(userString, MAX, stdin);
 
-    printf("\nYou entered: %s\n", userString);
+    printf("You entered: %s\n", userString);
     printf("Number of characters: %d\n", GetNumOfCharacters(userString));
     OutputWithoutWhitespace(userString);
 
@@ -43,13 +43,15 @@ int main()
 
 // Function Definitions
 int GetNumOfCharacters(char* u) {
-    return strlen(u) - 1;
+    return strlen(u);
 }
 
 void OutputWithoutWhitespace(char* userStr) {
     for (int i = 0; i < strlen(userStr); i++) {
         if (isspace(userStr[i])) {
-            userStr[i] = userStr[i + 1];
+            for (int i = 0; i < strlen(userStr); i++) {
+                userStr[i] = userStr[i + 1];
+            }
         }
     }
     
