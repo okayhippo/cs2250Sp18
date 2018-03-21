@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  PersonInfo.h
+ *       Filename:  testPersonInfo.c
  *
- *    Description:  
+ *    Description:  test created library
  *
  *        Version:  1.0
- *        Created:  03/20/2018 09:21:41 AM
+ *        Created:  03/20/2018 09:38:48 AM
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,17 +15,22 @@
  *
  * =====================================================================================
  */
+#include <stdio.h>
 
-#ifndef
-// Structures
-typedef struct PersonInfo_struct {
-    int age;
-    double weight;
-}PersonInfo;
-
+// Constants
 
 // Function Prototypes
-void ShowInfo(PersonInfo p);
 
-void InitInfoStruct(PersonInfo pi);
-#endif
+// Main Function
+int main()
+{
+    PersonInfo p1;
+
+    InitInfoStruct(p1);
+    ShowInfo(p1);
+
+    return 0;
+}
+// Function Definitions
+
+

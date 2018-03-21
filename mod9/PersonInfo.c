@@ -30,4 +30,9 @@ void ShowInfo(PersonInfo p) {
     printf("Your weight is [%.2lf]\n", p.weight);
 }
 
-
+void InitInfoStruct(PersonInfo pi) {
+    pi.age = -99;
+    pi.weight = -99.0;
+    
+    return;
+}
