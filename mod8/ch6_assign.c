@@ -23,9 +23,6 @@
 const int MAX = 256;
 
 // Function Prototypes
-int GetNumOfCharacters(char*);
-void OutputWithoutWhitespace(char*);
-
 void PrintMenu(char*);
 int GetNumOfNonWSCharacters(const char*);
 int GetNumOfWords(const char*);
@@ -208,8 +205,8 @@ void ReplaceExclamation(char* str) {
 
 /* 
  * ===  FUNCTION  ======================================================================
- *         Name:  Shorten
- *  Description:  
+ *         Name:  ShortenSpace
+ *  Description:  shortens the space in between words
  * =====================================================================================
  */
 void ShortenSpace(char* str) {
