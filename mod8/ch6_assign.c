@@ -94,8 +94,8 @@ void PrintMenu(char* str) {
             printf("%s\n", str);
             break;
 
-        default:
-            printf("That is not a valid option. Please try again.\n");
+        case 'q':
+            break;
 
     }
 }
