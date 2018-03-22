@@ -29,9 +29,9 @@ void OutputWithoutWhitespace(char*);
 void PrintMenu(char*);
 int GetNumOfNonWSCharacters(const char*);
 int GetNumOfWords(const char*);
-void FixCaps(char*);
-void Replace(char*);
-void Shorten(char*);
+void FixCapitalization(char*);
+void ReplaceExclamation(char*);
+void ShortenSpace(char*);
 
 
 // Main Function
@@ -113,30 +113,30 @@ void PrintMenu(char* str) {
 
     switch (userChoice) {
         case 'c':
-            printf("Number of non-whitespace characters: %d", GetNumOfNonWSCharacters(str));
+            printf("Number of non-whitespace characters: %d\n", GetNumOfNonWSCharacters(str));
             break;
 
         case 'w':
-            printf("Number of words: %d", GetNumOfWords(str));
+            printf("Number of words: %d\n", GetNumOfWords(str));
             break;
 
         case 'f':
-            FixCaps(str);
+            FixCapitalization(str);
             printf("%s\n", str);
             break;
 
         case 'r':
-            Replace(str);
+            ReplaceExclamation(str);
             printf("%s\n", str);
             break;
 
         case 's':
-            Shorten(str);
+            ShortenSpace(str);
             printf("%s\n", str);
             break;
 
         default:
-            break;
+            printf("That is not a valid option. Please try again.\n");
 
     }
 }
@@ -204,21 +204,22 @@ int GetNumOfWords(const char* str) {
  */
 void FixCapitalization(char* str) {
     
-    for (int i = 0; i < strlen(str); i++) {
+    for (int i = 0; i < strlen(str); i++) {     // Loop through string
+        if (isupper(str[0]) == 0) {
+            str[0] = toupper(str[0]);
+        }
+        else if (str[i] == '.') {    // If index i is a period
 
-        if (str[i] == '.') {
-            for (int j = i; j < strlen(str); j++) {
-
-                if (isspace(str[j] != 0)) {
+            for (int j = i; j < strlen(str); j++) {     // Loop through string starting a i
+                if (isspace(str[j] != 0)) {     // When for loop reaches a char that isn't a space
                     str[j] = toupper(str[j]);
                     break;
                 }
-
             }
-        }
 
+        }
     }
-    
+
 }
 
 
@@ -229,7 +230,7 @@ void FixCapitalization(char* str) {
  *  Description:  Replaces exclamation points with a period
  * =====================================================================================
  */
-void Replace(char* str) {
+void ReplaceExclamation(char* str) {
 
     for (int i = 0; i < strlen(str); i++) {
 
@@ -250,8 +251,8 @@ void Replace(char* str) {
  * =====================================================================================
  */
 void Shorten(char* str) {
+    
     for (int i = 0; i < strlen(str); i++) {
-
         if (str[i] == ' ' && str[i + 1] == ' ') {
             int j = i;
 
@@ -261,7 +262,7 @@ void Shorten(char* str) {
 
             }while (str[j] != ' ');
         }
-
     }
+
 }
 
