@@ -52,45 +52,7 @@ int main()
 
 
 
-
 // Function Definitions
-/* 
- * ===  FUNCTION  ======================================================================
- *         Name:  GetNumOfCharacters
- *  Description:  returns how many characters in the given string
- * =====================================================================================
- */
-int GetNumOfCharacters(char* u) {
-        return strlen(u);
-}
-
-
-/* 
- * ===  FUNCTION  ======================================================================
- *         Name:  Outputwithoutwhitespace
- *  Description:  outputs string without any whitespace
- * =====================================================================================
- */
-
-void OutputWithoutWhitespace(char* userStr) {
-        for (int i = 0; i < strlen(userStr); i++) {
-        
-        if (isspace(userStr[i])) {
-            
-           userStr[i] = userStr[i + 1];
-
-           for (int j = i + 1; j < strlen(userStr); j++) {
-                userStr[j] = userStr[j + 1];
-           }
-
-        }
-
-    }
-    
-    printf("String with no whitespace: %s\n", userStr);
-}
-
-
 /* 
  * ===  FUNCTION  ======================================================================
  *         Name:  PrintMenu
@@ -250,7 +212,7 @@ void ReplaceExclamation(char* str) {
  *  Description:  
  * =====================================================================================
  */
-void Shorten(char* str) {
+void ShortenSpace(char* str) {
     
     for (int i = 0; i < strlen(str); i++) {
         if (str[i] == ' ' && str[i + 1] == ' ') {
