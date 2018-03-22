@@ -25,9 +25,10 @@ const int MAX = 256;
 // Function Prototypes
 int GetNumOfCharacters(char*);
 void OutputWithoutWhitespace(char*);
-void PrintMenu();
-void MenuChoice(char*);
-void Count(char, char*);
+
+void PrintMenu(char*);
+int GetNumOfNonWSCharacters(const char*);
+int GetNumOfWords(const char*);
 void FixCaps(char*);
 void Replace(char*);
 void Shorten(char*);
@@ -43,8 +44,7 @@ int main()
 
     printf("\nYou entered: %s\n", userString);
 
-    PrintMenu();
-    MenuChoice(userString);
+    PrintMenu(userString);
     
     return 0;
 }
@@ -97,7 +97,9 @@ void OutputWithoutWhitespace(char* userStr) {
  *  Description:  Prints menu
  * =====================================================================================
  */
-void PrintMenu() {
+void PrintMenu(char* str) {
+    char userChoice = ' ';
+
     printf("MENU\n");
     printf("c - Number of non-whitespace characters\n");
     printf("w - Number of words\n");
@@ -105,29 +107,17 @@ void PrintMenu() {
     printf("r - Replace all !'s\n");
     printf("s - Shorten spaces\n");
     printf("q - Quit\n\n");
-}
-
-
-
-/* 
- * ===  FUNCTION  ======================================================================
- *         Name:  MenuChoice
- *  Description:  Implements function based on user choice
- * =====================================================================================
- */
-void MenuChoice(char* str) {
-    char userChoice = ' ';
 
     printf("Choose an option:\n");
     scanf("%c", &userChoice);
 
     switch (userChoice) {
         case 'c':
-            Count(userChoice, str);
+            printf("Number of non-whitespace characters: %d", GetNumOfNonWSCharacters(str));
             break;
 
         case 'w':
-            Count(userChoice, str);
+            printf("Number of words: %d", GetNumOfWords(str));
             break;
 
         case 'f':
@@ -147,6 +137,7 @@ void MenuChoice(char* str) {
 
         default:
             break;
+
     }
 }
 
@@ -154,36 +145,53 @@ void MenuChoice(char* str) {
 
 /* 
  * ===  FUNCTION  ======================================================================
- *         Name:  Count
- *  Description:  Counts either non-whitespaces or words
+ *         Name:  GetNumOfNonwSCharacters
+ *  Description:  Returns the number of characters which are not whitespace
  * =====================================================================================
  */
-void Count(char c, char* str) {
+int GetNumOfNonWSCharacters(const char* str) {
     unsigned int count = 0;
 
-    if (c == 'c') {
-        
-        for (int i = 0; i < strlen(str); i++) {
-            if (isspace(str[i]) == 0) {
-                count++;
-            }
+    for (int i = 0; i < strlen(str); i++) {
+        if (isspace(str[i]) == 0) {
+            count++;
         }
-
-
-
-        printf("Number of non-whitespace characters: %d\n", count);
-
     }
-    else if (c == 'w') {
-        for (int i = 0; i < strlen(str); i++) {
-            if (isspace(str[i]) == 0 && isspace(str[i + 1]) != 0) {
-                count++;
+
+    return count;
+}
+
+
+
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  MenuChoice
+ *  Description:  Implements function based on user choice
+ * =====================================================================================
+ */
+int GetNumOfWords(const char* str) {
+    unsigned int count = 0;
+
+    for (int i = 0; i < strlen(str); i++) {     // Loop through string starting at 0
+        if (isspace(str[i]) == 0) {         // If index i is not a space
+            
+            for (int j = i; j < strlen(str); j++) {     // Loop through string starting at i
+                if (isspace(str[j]) != 0) {         // If index j is a space
+                    count++;
+                    i = j;
+                    break;
+                }
+
+                else if (isspace(str[j]) == '.') {      // If index j is a period
+                    count++;
+                    break;
+                }
             }
+
         }
-
-        printf("Number of words: %d\n", count);
-
     }
+
+    return count;
 }
 
 
@@ -194,7 +202,7 @@ void Count(char c, char* str) {
  *  Description:  Fixes any capitalization errors that start sentences
  * =====================================================================================
  */
-void FixCaps(char* str) {
+void FixCapitalization(char* str) {
     
     for (int i = 0; i < strlen(str); i++) {
 
