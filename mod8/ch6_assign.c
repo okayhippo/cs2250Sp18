@@ -59,45 +59,48 @@ int main()
 void PrintMenu(char* str) {
     char userChoice = ' ';
 
-    printf("MENU\n");
-    printf("c - Number of non-whitespace characters\n");
-    printf("w - Number of words\n");
-    printf("f - Fix capitalization\n");
-    printf("r - Replace all !'s\n");
-    printf("s - Shorten spaces\n");
-    printf("q - Quit\n\n");
+    do {
+        printf("MENU\n");
+        printf("c - Number of non-whitespace characters\n");
+        printf("w - Number of words\n");
+        printf("f - Fix capitalization\n");
+        printf("r - Replace all !'s\n");
+        printf("s - Shorten spaces\n");
+        printf("q - Quit\n\n");
 
-    printf("Choose an option:\n");
-    scanf("%c", &userChoice);
+        printf("Choose an option:\n");
+        scanf("%c", &userChoice);
 
-    switch (userChoice) {
-        case 'c':
-            printf("Number of non-whitespace characters: %d\n", GetNumOfNonWSCharacters(str));
-            break;
+        switch (userChoice) {
+            case 'c':
+                printf("Number of non-whitespace characters: %d\n", GetNumOfNonWSCharacters(str));
+                break;
 
-        case 'w':
-            printf("Number of words: %d\n", GetNumOfWords(str));
-            break;
+            case 'w':
+                printf("Number of words: %d\n", GetNumOfWords(str));
+                break;
 
-        case 'f':
-            FixCapitalization(str);
-            printf("%s\n", str);
-            break;
+            case 'f':
+                FixCapitalization(str);
+                printf("%s\n", str);
+                break;
 
-        case 'r':
-            ReplaceExclamation(str);
-            printf("%s\n", str);
-            break;
+            case 'r':
+                ReplaceExclamation(str);
+                printf("%s\n", str);
+                break;
 
-        case 's':
-            ShortenSpace(str);
-            printf("%s\n", str);
-            break;
+            case 's':
+                ShortenSpace(str);
+                printf("%s\n", str);
+                break;
 
-        case 'q':
-            break;
+            case 'q':
+                break;
 
-    }
+        }
+
+    }while (userChoice != 'q');
 }
 
 
