@@ -39,7 +39,7 @@ int main()
     printf("Enter a sample text:\n");
     fgets(userString, MAX, stdin);
 
-    printf("\nYou entered: %s\n", userString);
+    printf("You entered: %s\n", userString);
 
     PrintMenu(userString);
     
@@ -69,7 +69,7 @@ void PrintMenu(char* str) {
         printf("q - Quit\n\n");
 
         printf("Choose an option:\n");
-        scanf("%c", &userChoice);
+        scanf(" %c", &userChoice);
 
         switch (userChoice) {
             case 'c':
@@ -87,7 +87,7 @@ void PrintMenu(char* str) {
 
             case 'r':
                 ReplaceExclamation(str);
-                printf("%s\n", str);
+                printf("Edited text: %s\n", str);
                 break;
 
             case 's':
