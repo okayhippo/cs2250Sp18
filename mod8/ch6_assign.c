@@ -36,7 +36,7 @@ int main()
 {
     char userString[MAX];
 
-    printf("Enter a sample text:\n");
+    printf("Enter a sample text:\n\n");
     fgets(userString, MAX, stdin);
 
     printf("You entered: %s\n", userString);
@@ -73,11 +73,11 @@ void PrintMenu(char* str) {
 
         switch (userChoice) {
             case 'c':
-                printf("Number of non-whitespace characters: %d\n", GetNumOfNonWSCharacters(str));
+                printf("Number of non-whitespace characters: %d\n\n", GetNumOfNonWSCharacters(str));
                 break;
 
             case 'w':
-                printf("Number of words: %d\n", GetNumOfWords(str));
+                printf("Number of words: %d\n\n", GetNumOfWords(str));
                 break;
 
             case 'f':
