@@ -144,7 +144,7 @@ int GetNumOfWords(const char* str) {
                     break;
                 }
 
-                else if (isspace(str[j]) == '.') {      // If index j is a period
+                else if (str[j] == '.' || str[j] == '!' || str[j] == '?') {      // If index j is a period
                     count++;
                     break;
                 }
