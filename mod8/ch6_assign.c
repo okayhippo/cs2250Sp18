@@ -82,7 +82,7 @@ void PrintMenu(char* str) {
 
             case 'f':
                 FixCapitalization(str);
-                printf("%s\n", str);
+                printf("Edited text: %s\n", str);
                 break;
 
             case 'r':
@@ -92,7 +92,7 @@ void PrintMenu(char* str) {
 
             case 's':
                 ShortenSpace(str);
-                printf("%s\n", str);
+                printf("Edited text: %s\n", str);
                 break;
 
             case 'q':
@@ -114,8 +114,8 @@ void PrintMenu(char* str) {
 int GetNumOfNonWSCharacters(const char* str) {
     unsigned int count = 0;
 
-    for (int i = 0; i < strlen(str); i++) {
-        if (isspace(str[i]) == 0) {
+    for (int i = 0; i < strlen(str); i++) { // Loop through string
+        if (isspace(str[i]) == 0) {         // If char is not a space increment
             count++;
         }
     }
@@ -134,19 +134,24 @@ int GetNumOfNonWSCharacters(const char* str) {
 int GetNumOfWords(const char* str) {
     unsigned int count = 0;
 
-    for (int i = 0; i < strlen(str); i++) {     // Loop through string starting at 0
-        if (isspace(str[i]) == 0) {         // If index i is not a space
+    for (int i = 0; i < strlen(str); i++) {     // Loop through string starting at 0        
+        if (isalpha(str[i]) != 0) {         // If index i is alpha
             
             for (int j = i; j < strlen(str); j++) {     // Loop through string starting at i
                 if (isspace(str[j]) != 0) {         // If index j is a space
                     count++;
                     i = j;
-                    break;
+                    j = 1000;
                 }
 
+<<<<<<< HEAD
                 else if (isspace(str[j]) == '.') {      // If index j is a period
+=======
+                else if (str[j] == '.' || str[j] == '!' || str[j] == '?') {      // If index j is a punctuation mark
+>>>>>>> 26a8d1ad1fa6ce2a221cfa0339ed18ee01d6e50a
                     count++;
-                    break;
+                    i = j;
+                    j = 1000;
                 }
             }
 
@@ -160,22 +165,24 @@ int GetNumOfWords(const char* str) {
 
 /* 
  * ===  FUNCTION  ======================================================================
- *         Name:  FixCaps
+ *         Name:  FixCapitalization
  *  Description:  Fixes any capitalization errors that start sentences
  * =====================================================================================
  */
 void FixCapitalization(char* str) {
     
     for (int i = 0; i < strlen(str); i++) {     // Loop through string
+        
         if (isupper(str[0]) == 0) {
             str[0] = toupper(str[0]);
         }
-        else if (str[i] == '.') {    // If index i is a period
+        
+        if (str[i] == '.' || str[i] == '!' || str[i] == '?') {    // If index i is a punctation mark
 
             for (int j = i; j < strlen(str); j++) {     // Loop through string starting a i
-                if (isspace(str[j] != 0)) {     // When for loop reaches a char that isn't a space
+                if (isalpha(str[j]) != 0 && isupper(str[j]) == 0) {     // When for loop reaches a char that isn't a space
                     str[j] = toupper(str[j]);
-                    break;
+                    j = 1000;
                 }
             }
 
@@ -196,8 +203,8 @@ void ReplaceExclamation(char* str) {
 
     for (int i = 0; i < strlen(str); i++) {
 
-        if (str[i] == '!') {
-            str[i] = '.';
+        if (str[i] == '!') {    // If char is an !
+            str[i] = '.';       // Set char to be .
         }
 
     }
@@ -214,17 +221,16 @@ void ReplaceExclamation(char* str) {
  */
 void ShortenSpace(char* str) {
     
-    for (int i = 0; i < strlen(str); i++) {
-        if (str[i] == ' ' && str[i + 1] == ' ') {
-            int j = i;
-
-            do {
-
-                str[j] = str[j + 1];
-
-            }while (str[j] != ' ');
+    for (int i = 0; i < strlen(str); i++) {         // Loop through string
+        
+        if (isspace(str[i]) != 0 && isspace(str[i + 1]) != 0) {   // If chars i and i + 1 are spaces
+            
+            for (int j = i; j < strlen(str); j++) { // Loop through string starting at index i
+                str[j] = str[j + 1];        // set j equal to j + 1
+            }
+            
         }
+   
     }
 
 }
-
