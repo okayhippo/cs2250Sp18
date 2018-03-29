@@ -83,7 +83,7 @@ int main()
     printf("TOTAL COST\n");
     PrintItemCost(&itemOne);
     PrintItemCost(&itemTwo);
-    printf("Total: $%d\n", (itemOne.itemPrice * itemOne.itemQuantity) + 
+    printf("\nTotal: $%d\n", (itemOne.itemPrice * itemOne.itemQuantity) + 
                             (itemTwo.itemPrice * itemTwo.itemQuantity));
 
 

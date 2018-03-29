@@ -27,7 +27,7 @@ typedef struct ItemToPurchase_struct {
 }ItemToPurchase;
 
 void MakeItemBlank(ItemToPurchase* item);
-void PrintItemCost(ItemToPurchase*);
+void PrintItemCost(ItemToPurchase* item);
 // void PrintItemDescription(ItemToPurchase*);
 
 #endif
