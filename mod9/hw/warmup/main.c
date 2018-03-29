@@ -26,25 +26,28 @@
 // Main Function
 int main()
 {
-    ItemToPurchase* itemOne;
-    ItemToPurchase* itemTwo;
+    ItemToPurchase itemOne;
+    ItemToPurchase itemTwo;
     char itemName[50];
 
-    MakeItemBlank(itemOne);
-    MakeItemBlank(itemTwo);
+    MakeItemBlank(&itemOne);
+    MakeItemBlank(&itemTwo);
+
+
+
 
     // ITEM ONE
     printf("Item 1\n");
     printf("Enter the item name:\n");
     fgets(itemName, sizeof(itemName), stdin);
-    strcpy(itemName, itemOne->itemName);
+    strcpy(itemName, itemOne.itemName);
 
 
     printf("Enter the item price:\n");
-    scanf("%d", &itemOne->itemPrice);
+    scanf("%d", &itemOne.itemPrice);
 
     printf("Enter the item quantity:\n");
-    scanf("%d", &itemOne->itemQuantity);
+    scanf("%d", &itemOne.itemQuantity);
     printf("\n");
 
     // Flush the buffer
@@ -55,22 +58,22 @@ int main()
     printf("Item 2\n");
     printf("Enter the item name:\n");
     fgets(itemName, sizeof(itemName), stdin);
-    strcpy(itemName, itemTwo->itemName);
+    strcpy(itemName, itemTwo.itemName);
 
     printf("Enter the item price:\n");
-    scanf("%d", &itemTwo->itemPrice);
+    scanf("%d", &itemTwo.itemPrice);
     
 
     printf("Enter the item quantity:\n");
-    scanf("%d", &itemTwo->itemQuantity);
+    scanf("%d", &itemTwo.itemQuantity);
     printf("\n");
 
 
     // PRINT ITEM
     printf("TOTAL COST\n");
-    PrintItemCost(itemOne);
-    PrintItemCost(itemTwo);
-    printf("Total: $%d\n", itemOne->itemTotal + itemTwo->itemTotal);
+    PrintItemCost(&itemOne);
+    PrintItemCost(&itemTwo);
+    printf("Total: $%d\n", itemOne.itemTotal + itemTwo.itemTotal);
 
 
     return 0;
