@@ -28,7 +28,11 @@ int main()
 {
     ItemToPurchase itemOne;
     ItemToPurchase itemTwo;
-    char itemName[50];
+    
+    char name1[50];
+    char name2[50];
+    int price;
+    int qty;
 
     MakeItemBlank(&itemOne);
     MakeItemBlank(&itemTwo);
@@ -39,41 +43,48 @@ int main()
     // ITEM ONE
     printf("Item 1\n");
     printf("Enter the item name:\n");
-    fgets(itemName, sizeof(itemName), stdin);
-    strcpy(itemName, itemOne.itemName);
-
+    fgets(name1, sizeof(name1), stdin);
 
     printf("Enter the item price:\n");
-    scanf("%d", &itemOne.itemPrice);
+    scanf("%d", &price);
 
     printf("Enter the item quantity:\n");
-    scanf("%d", &itemOne.itemQuantity);
+    scanf("%d", &qty);
     printf("\n");
 
-    // Flush the buffer
+    // Flush the buffer & insert item vals
+    strcpy(itemOne.itemName, name1);
+    itemOne.itemPrice = price;
+    itemOne.itemQuantity = qty;
     getchar();
 
 
     // ITEM TWO
     printf("Item 2\n");
     printf("Enter the item name:\n");
-    fgets(itemName, sizeof(itemName), stdin);
-    strcpy(itemName, itemTwo.itemName);
-
+    fgets(name2, sizeof(name2), stdin);
+    
     printf("Enter the item price:\n");
-    scanf("%d", &itemTwo.itemPrice);
+    scanf("%d", &price);
     
 
     printf("Enter the item quantity:\n");
-    scanf("%d", &itemTwo.itemQuantity);
+    scanf("%d", &qty);
     printf("\n");
+
+    // Flush the buffer & insert item vals
+    strcpy(itemTwo.itemName, name2);
+    itemTwo.itemPrice = price;
+    itemTwo.itemQuantity = qty;
+    getchar();
 
 
     // PRINT ITEM
     printf("TOTAL COST\n");
     PrintItemCost(&itemOne);
     PrintItemCost(&itemTwo);
-    printf("Total: $%d\n", itemOne.itemTotal + itemTwo.itemTotal);
+    printf("Total: $%d\n", (itemOne.itemPrice * itemOne.itemQuantity) + 
+                            (itemTwo.itemPrice * itemTwo.itemQuantity));
 
 
     return 0;

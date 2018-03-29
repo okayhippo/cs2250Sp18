@@ -24,7 +24,6 @@ typedef struct ItemToPurchase_struct {
     // char itemDescription[50];
     int itemPrice;
     int itemQuantity;
-    int itemTotal;
 }ItemToPurchase;
 
 void MakeItemBlank(ItemToPurchase* item);

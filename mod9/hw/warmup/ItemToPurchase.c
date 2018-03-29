@@ -34,8 +34,7 @@ void MakeItemBlank(ItemToPurchase* item) {
     strcpy(item->itemName, "none");
     item->itemQuantity = 0;
     item->itemPrice = 0;
-    item->itemTotal = item->itemQuantity * item->itemPrice;
-
+    
 }
 
 
@@ -48,6 +47,6 @@ void MakeItemBlank(ItemToPurchase* item) {
  */
 void PrintItemCost(ItemToPurchase* item) {
 
-    printf("%s %d @ $%d = $%d\n", item->itemName, item->itemQuantity, item->itemPrice, item->itemTotal);
+    printf("%s %d @ $%d = $%d\n", item->itemName, item->itemQuantity, item->itemPrice, item->itemPrice * item->itemQuantity);
 
 }
