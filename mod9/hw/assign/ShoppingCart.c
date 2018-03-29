@@ -16,6 +16,7 @@
  * =====================================================================================
  */
 #include <stdio.h>
+#include <string.h>
 #include "ShoppingCart.h"
 
 // Constants
@@ -29,9 +30,18 @@
  *                * Increment
  * =====================================================================================
  */
-ShoppingCart AddItem(ItemToPurchase item, ShoppingCart* cart) {
+ShoppingCart AddItem(ItemToPurchase* item, ShoppingCart* cart) {
 
-    
+    for (int i = 0; i < cart->cartSize; i++) {
+
+        if (!cart->cartItems[i]) {
+
+            cart->cartItems[i] = item;
+            cartSize++
+
+        }
+
+    }
 
     return cart;
 
@@ -54,6 +64,20 @@ ShoppingCart RemoveItem(char name[], ShoppingCart* cart;) {
     // 2) IF you find it, adjust your index in the array
     // cart.cartItems[Index] = cart.cartItems[Index + 1];
     // ELSE print no item
+    for (int i = 0; i < cart->cartSize; i++) {
+
+        if (strcmp(cart->cartItems[i]->itemName, name) == 0) {
+
+            cart->cartItems[i] = cart->cartItems[i + 1];
+            cart->cartSize--;
+
+        }
+
+        else if ((cart->cartSize - 1) && strcmp(cart->cartItems[i]->itemName, name) != 0) {
+            printf("Item not found in cart. Nothing removed\n");
+        }
+
+    }
 
     return cart;
 
@@ -67,7 +91,7 @@ ShoppingCart RemoveItem(char name[], ShoppingCart* cart;) {
  */
 int GetNumItemsInCart(ShoppingCart* cart) {
 
-    return cart;
+    return cart->cartSize;
 
 }
 
@@ -78,8 +102,31 @@ int GetNumItemsInCart(ShoppingCart* cart) {
  * =====================================================================================
  */
 void PrintTotal(ShoppingCart* cart) {
+    int total;
 
-    
+    if (cart->cartSize == 0) {
+
+        printf("SHOPPING CART IS EMPTY\n");
+
+    }
+    else {
+
+        printf("%s's Shopping Cart - %s\n", cart->customerName, cart->currentDate);
+        printf("Number of Items: %d\n", GetNumItemsInCart(cart));
+        printf("\n");
+
+        for (int i = 0; i < cart->cartSize; i++) {
+            if (cart->cartItems[i]) {
+
+                PrintItemCost(cart->cartItems[i]);
+                total += cart->cartItems->itemPrice;
+
+            }
+        }
+
+        printf("Total: %d\n", total);
+
+    }
 
 }
 
@@ -89,9 +136,22 @@ void PrintTotal(ShoppingCart* cart) {
  *  Description:  Print the descriptions of the items in the cart
  * =====================================================================================
  */
-void PrintDescriptions(ShoppingCart) {
+void PrintDescriptions(ShoppingCart* cart) {
 
+    printf("%s's Shopping Cart - %s\n", cart->customerName, cart->currentDate);
+    printf("\n");
     
+    printf("Item Descriptions\n");
+    
+    for (int i = 0; i < cart->cartSize; i++) {
+
+        if (cart->cartItems[i]) {
+
+            printf("%s: %s\n", cart->cartItems[i].itemName, cart->cartItems[i].itemDescription);
+
+        }
+
+    }
 
 }
 

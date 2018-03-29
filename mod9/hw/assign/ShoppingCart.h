@@ -24,7 +24,7 @@
 typedef struct ShoppingCart_s {
     char customerName[50];
     char currentDate[50];
-    ItemsToPurchase item;
+    ItemsToPurchase cartItems[10];
     int cartSize;
 }
 
