@@ -38,12 +38,11 @@ int main()
     MakeItemBlank(&itemTwo);
 
 
-
-
     // ITEM ONE
     printf("Item 1\n");
     printf("Enter the item name:\n");
     fgets(name1, sizeof(name1), stdin);
+    name1[strlen(name1) - 1] = '\0'; // remove NULL char
 
     printf("Enter the item price:\n");
     scanf("%d", &price);
@@ -59,10 +58,12 @@ int main()
     getchar();
 
 
+
     // ITEM TWO
     printf("Item 2\n");
     printf("Enter the item name:\n");
     fgets(name2, sizeof(name2), stdin);
+    name2[strlen(name2) - 1] = '\0'; // remove NULL char
     
     printf("Enter the item price:\n");
     scanf("%d", &price);
