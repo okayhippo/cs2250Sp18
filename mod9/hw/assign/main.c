@@ -18,78 +18,107 @@
 #include <stdio.h>
 #include <string.h>
 #include "ItemToPurchase.h"
+#include "ShoppingCart.h"
 
 // Constants
 
 // Function Prototypes
+void PrintMenu(ShoppingCart*);
 
 // Main Function
 int main()
 {
-    ItemToPurchase itemOne;
-    ItemToPurchase itemTwo;
-    
-    char name1[50];
-    char name2[50];
-    int price;
-    int qty;
+    ShoppingCart cartOne;
 
-    MakeItemBlank(&itemOne);
-    MakeItemBlank(&itemTwo);
+    // Prompt and store user generated values
+    // values used for name and date
+    printf("Enter Customer's Name:\n");
+    scanf("%s", cartOne.customerName);
+    printf("Enter Today's Date:\n");
+    scanf("%s", cartOne.currentDate);
 
-
-    // ITEM ONE
-    printf("Item 1\n");
-    printf("Enter the item name:\n");
-    fgets(name1, sizeof(name1), stdin);
-    name1[strlen(name1) - 1] = '\0'; // remove NULL char
-
-    printf("Enter the item price:\n");
-    scanf("%d", &price);
-
-    printf("Enter the item quantity:\n");
-    scanf("%d", &qty);
-    printf("\n");
-
-    // Flush the buffer & insert item vals
-    strcpy(itemOne.itemName, name1);
-    itemOne.itemPrice = price;
-    itemOne.itemQuantity = qty;
-    getchar();
+    printf("Customer Name: %s\n", cartOne.customerName);
+    printf("Today's Date: %s\n", cartOne.currentDate);
 
 
-
-    // ITEM TWO
-    printf("Item 2\n");
-    printf("Enter the item name:\n");
-    fgets(name2, sizeof(name2), stdin);
-    name2[strlen(name2) - 1] = '\0'; // remove NULL char
-    
-    printf("Enter the item price:\n");
-    scanf("%d", &price);
-    
-
-    printf("Enter the item quantity:\n");
-    scanf("%d", &qty);
-    printf("\n");
-
-    // Flush the buffer & insert item vals
-    strcpy(itemTwo.itemName, name2);
-    itemTwo.itemPrice = price;
-    itemTwo.itemQuantity = qty;
-    getchar();
-
-
-    // PRINT ITEM
-    printf("TOTAL COST\n");
-    PrintItemCost(&itemOne);
-    PrintItemCost(&itemTwo);
-    printf("\nTotal: $%d\n", (itemOne.itemPrice * itemOne.itemQuantity) + 
-                            (itemTwo.itemPrice * itemTwo.itemQuantity));
+    PrintMenu(&cartOne);
 
 
     return 0;
 }
+
+
+
+
 // Function Definitions
 
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  PrintMenu
+ *  Description:  Prints menu and implements based on userChar
+ * =====================================================================================
+ */
+void PrintMenu(ShoppingCart* cart) {
+    char userChar;
+    char itemName[50] = "none";
+    int qty;
 
+
+    do {
+
+        // MENU
+        printf("MENU\n");
+        printf("a - Add item to cart\n");
+        printf("r - Remove item from cart\n");
+        printf("c - Change item quantity\n");
+        printf("i - Output items' descriptions\n");
+        printf("o - Output shopping cart\n");
+        printf("q - Quit\n");
+        printf("\n");
+        printf("Choose and option\n");
+        scanf("%c", &userChar);
+
+
+        // Determine implementation based on userChar
+        if (userChar == 'o' || userChar == 'O') {
+                printf("OUTPUT SHOPPING CART\n");
+                PrintTotal(cart);
+        }
+        else if (userChar == 'i' || userChar == 'I') {
+                printf("OUTPUT ITEMS' DESCRIPTIONS\n");
+                PrintDescriptions(cart);
+        }
+        else if (userChar == 'a' || userChar == 'A') {
+                // Create new item and make blank
+                ItemToPurchase item;
+                MakeItemBlank(&item);
+
+                printf("ADD ITEM TO CART\n");
+
+                // Get item details
+                printf("Enter the item name:\n");
+                scanf("%s", item.itemName);
+                printf("Enter the item description:\n");
+                scanf("%s", item.itemDescription);
+                printf("Enter the item price:\n");
+                scanf("%d", &item.itemPrice);
+                printf("Enter the item quantity:\n");
+                scanf("%d", &item.itemQuantity);
+        }
+        else if (userChar == 'r' || userChar == 'R') {
+                printf("REMOVE ITEM FROM CART\n");
+                printf("Enter name of item to remove:\n");
+                scanf("%s", itemName);
+                RemoveItem(itemName, cart);
+        }
+        else if (userChar == 'c' || userChar == 'C') {
+                printf("CHANGE ITEM QUANTITY\n");
+                printf("Enter the item name:\n");
+                scanf("%s", itemName);
+                printf("Enter the new quantity:\n");
+                scanf("%d", &qty);
+        }
+
+    } while (userChar != 'q' || userChar != 'Q');
+
+}

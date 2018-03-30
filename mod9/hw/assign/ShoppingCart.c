@@ -30,18 +30,15 @@
  *                * Increment
  * =====================================================================================
  */
-ShoppingCart AddItem(ItemToPurchase* item, ShoppingCart* cart) {
+ShoppingCart* AddItem(ItemToPurchase* item, ShoppingCart* cart) {
 
-    for (int i = 0; i < cart->cartSize; i++) {
+   for (int i = 0; i < cart->cartSize; i++) {
 
-        if (!cart->cartItems[i]) {
-
-            cart->cartItems[i] = item;
-            cartSize++
+        if () {
 
         }
 
-    }
+   }
 
     return cart;
 
@@ -56,7 +53,7 @@ ShoppingCart AddItem(ItemToPurchase* item, ShoppingCart* cart) {
  *                * Decrement
  * =====================================================================================
  */
-ShoppingCart RemoveItem(char name[], ShoppingCart* cart;) {
+ShoppingCart* RemoveItem(char name[], ShoppingCart* cart) {
 
     // 1) strcmp to find the item
     // cart.cartItems[Index].name
@@ -66,14 +63,14 @@ ShoppingCart RemoveItem(char name[], ShoppingCart* cart;) {
     // ELSE print no item
     for (int i = 0; i < cart->cartSize; i++) {
 
-        if (strcmp(cart->cartItems[i]->itemName, name) == 0) {
+        if (strcmp(cart->cartItems[i].itemName, name) == 0) {
 
             cart->cartItems[i] = cart->cartItems[i + 1];
             cart->cartSize--;
 
         }
 
-        else if ((cart->cartSize - 1) && strcmp(cart->cartItems[i]->itemName, name) != 0) {
+        else if ((cart->cartSize - 1) && strcmp(cart->cartItems[i].itemName, name) != 0) {
             printf("Item not found in cart. Nothing removed\n");
         }
 
@@ -115,13 +112,10 @@ void PrintTotal(ShoppingCart* cart) {
         printf("Number of Items: %d\n", GetNumItemsInCart(cart));
         printf("\n");
 
+        // Loop to display PrintItemCost and add to total
         for (int i = 0; i < cart->cartSize; i++) {
-            if (cart->cartItems[i]) {
-
-                PrintItemCost(cart->cartItems[i]);
-                total += cart->cartItems->itemPrice;
-
-            }
+            PrintItemCost(&cart->cartItems[i]);
+            total += cart->cartItems->itemPrice;
         }
 
         printf("Total: %d\n", total);
@@ -143,14 +137,9 @@ void PrintDescriptions(ShoppingCart* cart) {
     
     printf("Item Descriptions\n");
     
+    // Loop to display item descriptions;
     for (int i = 0; i < cart->cartSize; i++) {
-
-        if (cart->cartItems[i]) {
-
-            printf("%s: %s\n", cart->cartItems[i].itemName, cart->cartItems[i].itemDescription);
-
-        }
-
+        printf("%s: %s\n", cart->cartItems[i].itemName, cart->cartItems[i].itemDescription);
     }
 
 }

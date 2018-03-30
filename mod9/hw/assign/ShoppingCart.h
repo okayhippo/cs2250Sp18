@@ -19,20 +19,20 @@
 #ifndef SHOPPINGCART_INC__
 #define SHOPPINGCART_INC__
 
-#include "ItemsToPurchase.h"
+#include "ItemToPurchase.h"
 
-typedef struct ShoppingCart_s {
+typedef struct ShoppingCart_struct {
     char customerName[50];
     char currentDate[50];
-    ItemsToPurchase cartItems[10];
-    int cartSize;
-}
+    ItemToPurchase cartItems[10];
+    unsigned int cartSize;
+}ShoppingCart;
 
 
-ShoppingCart AddItem(ItemToPurchase, ShoppingCart*);
-ShoppingCart RemoveItem(ItemToPurchase, ShoppingCart*);
+ShoppingCart* AddItem(ItemToPurchase*, ShoppingCart*);
+ShoppingCart* RemoveItem(char[], ShoppingCart*);
 int GetNumItemsInCart(ShoppingCart*);
 void PrintTotal(ShoppingCart*);
-void PrintDescriptions(ShoppingCart);
+void PrintDescriptions(ShoppingCart*);
 
 #endif
