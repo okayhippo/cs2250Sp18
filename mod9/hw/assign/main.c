@@ -33,9 +33,12 @@ int main()
     // Prompt and store user generated values
     // values used for name and date
     printf("Enter Customer's Name:\n");
-    scanf("%s", cartOne.customerName);
+    fgets(cartOne.customerName, sizeof(cartOne.customerName), stdin);
+    cartOne.customerName[strlen(cartOne.customerName) - 1] = '\0';
+
     printf("Enter Today's Date:\n");
-    scanf("%s", cartOne.currentDate);
+    fgets(cartOne.currentDate, sizeof(cartOne.currentDate), stdin);
+    cartOne.currentDate[strlen(cartOne.currentDate) - 1] = '\0';
 
     printf("Customer Name: %s\n", cartOne.customerName);
     printf("Today's Date: %s\n", cartOne.currentDate);
@@ -118,7 +121,10 @@ void PrintMenu(ShoppingCart* cart) {
                 printf("Enter the new quantity:\n");
                 scanf("%d", &qty);
         }
+        else if (userChar == 'q' || userChar == 'Q') {
+            userChar = 'q';
+        }
 
-    } while (userChar != 'q' || userChar != 'Q');
+    } while (userChar != 'q' &&  userChar != 'Q');
 
 }

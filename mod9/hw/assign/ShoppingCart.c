@@ -32,13 +32,14 @@
  */
 ShoppingCart* AddItem(ItemToPurchase* item, ShoppingCart* cart) {
 
-   for (int i = 0; i < cart->cartSize; i++) {
+   
 
-        if () {
-
+        if (&cart->cartSize == 0) {
+            cart->cartItems[0] = *item;
         }
-
-   }
+        else if (&cart->cartSize > 0) {
+            cart->cartItems[cart->cartSize] = *item;
+        }
 
     return cart;
 
