@@ -100,9 +100,14 @@ void PrintMenu(ShoppingCart* cart) {
 
                 // Get item details
                 printf("Enter the item name:\n");
-                scanf("%s", item.itemName);
+                getchar();
+                fgets(item.itemName, sizeof(item.itemName), stdin);
+                item.itemName[strlen(item.itemName) - 1] = '\0';
+
                 printf("Enter the item description:\n");
-                scanf("%s", item.itemDescription);
+                fgets(item.itemDescription, sizeof(item.itemDescription), stdin);
+                item.itemDescription[strlen(item.itemDescription) - 1] = '\0';
+
                 printf("Enter the item price:\n");
                 scanf("%d", &item.itemPrice);
                 printf("Enter the item quantity:\n");
