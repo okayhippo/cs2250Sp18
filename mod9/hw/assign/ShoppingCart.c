@@ -87,8 +87,26 @@ ShoppingCart RemoveItem(char name[], ShoppingCart cart) {
  *  Description:  Modifies and item's description, price and/or quantity
  * =====================================================================================
  */
-ShoppingCart ModifyItem(ItemToPurchase item) {
+ShoppingCart ModifyItem(ItemToPurchase item, ShoppingCart cart) {
+    ItemToPurchase newItem;
 
+    printf("CHANGE ITEM QUANTITY\n");
+    printf("Enter the item name:\n");
+    fgets(newItem.itemName, sizeof(newItem.itemName), stdin);
+    newItem.itemName[strlen(newItem.itemName) - 1] = '\0';
+
+    printf("Enter the new quantity:\n");
+    scanf("%d", &newItem.itemQuantity);
+
+    for (int i = 0; i < cart.cartSize; i++) {
+
+        if (strcmp(newItem.itemName, cart.cartItems[i].itemName) == 0) {
+
+            item = newItem;
+
+        }
+
+    }
 
     return cart;
 
@@ -112,24 +130,24 @@ int GetNumItemsInCart(ShoppingCart cart) {
  *  Description:  Print the total price of the items in cart
  * =====================================================================================
  */
-void PrintTotal(ShoppingCart* cart) {
+void PrintTotal(ShoppingCart cart) {
     int total;
 
-    if (cart->cartSize == 0) {
+    if (cart.cartSize == 0) {
 
         printf("SHOPPING CART IS EMPTY\n");
 
     }
     else {
 
-        printf("%s's Shopping Cart - %s\n", cart->customerName, cart->currentDate);
+        printf("%s's Shopping Cart - %s\n", cart.customerName, cart.currentDate);
         printf("Number of Items: %d\n", GetNumItemsInCart(cart));
         printf("\n");
 
         // Loop to display PrintItemCost and add to total
-        for (int i = 0; i < cart->cartSize; i++) {
-            PrintItemCost(&cart->cartItems[i]);
-            total += cart->cartItems->itemPrice;
+        for (int i = 0; i < cart.cartSize; i++) {
+            PrintItemCost(cart.cartItems[i]);
+            total += cart.cartItems.itemPrice;
         }
 
         printf("Total: %d\n", total);
@@ -144,16 +162,16 @@ void PrintTotal(ShoppingCart* cart) {
  *  Description:  Print the descriptions of the items in the cart
  * =====================================================================================
  */
-void PrintDescriptions(ShoppingCart* cart) {
+void PrintDescriptions(ShoppingCart cart) {
 
-    printf("%s's Shopping Cart - %s\n", cart->customerName, cart->currentDate);
+    printf("%s's Shopping Cart - %s\n", cart.customerName, cart.currentDate);
     printf("\n");
     
     printf("Item Descriptions\n");
     
     // Loop to display item descriptions;
-    for (int i = 0; i < cart->cartSize; i++) {
-        printf("%s: %s\n", cart->cartItems[i].itemName, cart->cartItems[i].itemDescription);
+    for (int i = 0; i < cart.cartSize; i++) {
+        printf("%s: %s\n", cart.cartItems[i].itemName, cart.cartItems[i].itemDescription);
     }
 
 }

@@ -33,8 +33,8 @@ ShoppingCart AddItem(ItemToPurchase, ShoppingCart);
 ShoppingCart RemoveItem(char[], ShoppingCart);
 ShoppingCart ModifyItem(ItemToPurchase, ShoppingCart);
 
-int GetNumItemsInCart(ShoppingCart*);
-void PrintTotal(ShoppingCart*);
-void PrintDescriptions(ShoppingCart*);
+int GetNumItemsInCart(ShoppingCart);
+void PrintTotal(ShoppingCart);
+void PrintDescriptions(ShoppingCart);
 
 #endif
