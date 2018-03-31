@@ -80,8 +80,15 @@ void PrintMenu(ShoppingCart cart) {
         printf("o - Output shopping cart\n");
         printf("q - Quit\n");
         printf("\n");
-        printf("Choose an option:\n");
-        scanf("%c", &userChar);
+
+        while (userChar != 'a' && userChar != 'A' && userChar != 'r'
+                && userChar != 'R' && userChar != 'c' && userChar != 'C'
+                && userChar != 'i' && userChar != 'I' && userChar != 'o'
+                && userChar != 'O' && userChar != 'q' && userChar != 'Q') {
+
+            printf("Choose an option:\n");
+            scanf(" %c", &userChar);
+        }
 
 
         // Determine implementation based on userChar
@@ -97,6 +104,7 @@ void PrintMenu(ShoppingCart cart) {
                 // Create new item and make blank
                 ItemToPurchase item;
                 MakeItemBlank(&item);
+                
 
                 printf("ADD ITEM TO CART\n");
 
