@@ -90,19 +90,20 @@ void PrintMenu(ShoppingCart cart) {
             scanf(" %c", &userChar);
         }
 
-        printf("\n");
 
         // Determine implementation based on userChar
         if (userChar == 'o' || userChar == 'O') {
             while((userChar = getchar()) != EOF && userChar != '\n');
-            printf("OUTPUT SHOPPING CART\n");
+            printf("\nOUTPUT SHOPPING CART\n");
             PrintTotal(cart);
         }
         else if (userChar == 'i' || userChar == 'I') {
-            printf("OUTPUT ITEMS' DESCRIPTIONS\n");
+            while((userChar = getchar()) != EOF && userChar != '\n');
+            printf("\nOUTPUT ITEMS' DESCRIPTIONS\n");
             PrintDescriptions(cart);
         }
         else if (userChar == 'a' || userChar == 'A') {
+            while((userChar = getchar()) != EOF && userChar != '\n');
             // Create new item and make blank
             ItemToPurchase item;
             MakeItemBlank(&item);
@@ -126,12 +127,14 @@ void PrintMenu(ShoppingCart cart) {
             scanf("%d", &item.itemQuantity);
         }
         else if (userChar == 'r' || userChar == 'R') {
+            while((userChar = getchar()) != EOF && userChar != '\n');
             printf("REMOVE ITEM FROM CART\n");
             printf("Enter name of item to remove:\n");
             scanf("%s", itemName);
             RemoveItem(itemName, cart);
         }
         else if (userChar == 'c' || userChar == 'C') {
+            while((userChar = getchar()) != EOF && userChar != '\n');
             printf("CHANGE ITEM QUANTITY\n");
             printf("Enter the item name:\n");
             scanf("%s", itemName);
