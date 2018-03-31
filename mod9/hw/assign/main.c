@@ -23,7 +23,7 @@
 // Constants
 
 // Function Prototypes
-void PrintMenu(ShoppingCart*);
+void PrintMenu(ShoppingCart);
 
 // Main Function
 int main()
@@ -45,7 +45,7 @@ int main()
     printf("\n");
 
 
-    PrintMenu(&cartOne);
+    PrintMenu(cartOne);
 
 
     return 0;
@@ -62,7 +62,7 @@ int main()
  *  Description:  Prints menu and implements based on userChar
  * =====================================================================================
  */
-void PrintMenu(ShoppingCart* cart) {
+void PrintMenu(ShoppingCart cart) {
     char userChar;
     char itemName[50] = "none";
     int qty;
