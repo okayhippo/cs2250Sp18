@@ -42,6 +42,7 @@ int main()
 
     printf("Customer Name: %s\n", cartOne.customerName);
     printf("Today's Date: %s\n", cartOne.currentDate);
+    printf("\n");
 
 
     PrintMenu(&cartOne);
@@ -78,7 +79,7 @@ void PrintMenu(ShoppingCart* cart) {
         printf("o - Output shopping cart\n");
         printf("q - Quit\n");
         printf("\n");
-        printf("Choose and option\n");
+        printf("Choose an option:\n");
         scanf("%c", &userChar);
 
 

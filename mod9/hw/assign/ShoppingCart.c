@@ -30,15 +30,15 @@
  *                * Increment
  * =====================================================================================
  */
-ShoppingCart* AddItem(ItemToPurchase* item, ShoppingCart* cart) {
+ShoppingCart AddItem(ItemToPurchase item, ShoppingCart cart) {
 
    
 
-        if (&cart->cartSize == 0) {
-            cart->cartItems[0] = *item;
+        if (cart.cartSize == 0) {
+            cart.cartItems[0] = item;
         }
-        else if (&cart->cartSize > 0) {
-            cart->cartItems[cart->cartSize] = *item;
+        else if (cart.cartSize > 0) {
+            cart.cartItems[cart.cartSize] = item;
         }
 
     return cart;
@@ -54,7 +54,7 @@ ShoppingCart* AddItem(ItemToPurchase* item, ShoppingCart* cart) {
  *                * Decrement
  * =====================================================================================
  */
-ShoppingCart* RemoveItem(char name[], ShoppingCart* cart) {
+ShoppingCart RemoveItem(char name[], ShoppingCart cart) {
 
     // 1) strcmp to find the item
     // cart.cartItems[Index].name
@@ -64,14 +64,14 @@ ShoppingCart* RemoveItem(char name[], ShoppingCart* cart) {
     // ELSE print no item
     for (int i = 0; i < cart->cartSize; i++) {
 
-        if (strcmp(cart->cartItems[i].itemName, name) == 0) {
+        if (strcmp(cart.cartItems[i].itemName, name) == 0) {
 
-            cart->cartItems[i] = cart->cartItems[i + 1];
-            cart->cartSize--;
+            cart.cartItems[i] = cart.cartItems[i + 1];
+            cart.cartSize--;
 
         }
 
-        else if ((cart->cartSize - 1) && strcmp(cart->cartItems[i].itemName, name) != 0) {
+        else if ((cart.cartSize - 1) && strcmp(cart.cartItems[i].itemName, name) != 0) {
             printf("Item not found in cart. Nothing removed\n");
         }
 
@@ -83,13 +83,26 @@ ShoppingCart* RemoveItem(char name[], ShoppingCart* cart) {
 
 /* 
  * ===  FUNCTION  ======================================================================
+ *         Name:  ModifyItem
+ *  Description:  Modifies and item's description, price and/or quantity
+ * =====================================================================================
+ */
+ShoppingCart ModifyItem(ItemToPurchase item) {
+
+
+    return cart;
+
+}
+
+/* 
+ * ===  FUNCTION  ======================================================================
  *         Name:  GetNumItemsInCart
  *  Description:  Get the number of items located in the cart
  * =====================================================================================
  */
-int GetNumItemsInCart(ShoppingCart* cart) {
+int GetNumItemsInCart(ShoppingCart cart) {
 
-    return cart->cartSize;
+    return cart.cartSize;
 
 }
 
