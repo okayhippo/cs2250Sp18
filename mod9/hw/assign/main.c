@@ -95,7 +95,7 @@ void PrintMenu(ShoppingCart cart) {
         else if (userChar == 'a' || userChar == 'A') {
                 // Create new item and make blank
                 ItemToPurchase item;
-                MakeItemBlank(&item);
+                MakeItemBlank(item);
 
                 printf("ADD ITEM TO CART\n");
 

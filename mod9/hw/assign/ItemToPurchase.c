@@ -29,12 +29,12 @@
  *  Description:  * Sets itemName, itemQuantity, and itemPrice to "none", 0, 0
  * =====================================================================================
  */
-void MakeItemBlank(ItemToPurchase* item) {
+void MakeItemBlank(ItemToPurchase item) {
 
-    strcpy(item->itemName, "none");
-    strcpy(item->itemDescription, "none");
-    item->itemQuantity = 0;
-    item->itemPrice = 0;
+    strcpy(item.itemName, "none");
+    strcpy(item.itemDescription, "none");
+    item.itemQuantity = 0;
+    item.itemPrice = 0;
     
 }
 
@@ -46,9 +46,9 @@ void MakeItemBlank(ItemToPurchase* item) {
  *  Description:  * Prints itemName itemQuantity @ $itemPrice = $itemTotal
  * =====================================================================================
  */
-void PrintItemCost(ItemToPurchase* item) {
+void PrintItemCost(ItemToPurchase item) {
 
-    printf("%s %d @ $%d = $%d\n", item->itemName, item->itemQuantity, item->itemPrice, item->itemPrice * item->itemQuantity);
+    printf("%s %d @ $%d = $%d\n", item.itemName, item.itemQuantity, item.itemPrice, item.itemPrice * item.itemQuantity);
 
 }
 
@@ -60,8 +60,8 @@ void PrintItemCost(ItemToPurchase* item) {
  *  Description:  Prints item description
  * =====================================================================================
  */
-void PrintItemDescription(ItemToPurchase* item) {
+void PrintItemDescription(ItemToPurchase item) {
 
-    printf("%s: %s", item->itemName, item->itemDescription);
+    printf("%s: %s", item.itemName, item.itemDescription);
 
 }

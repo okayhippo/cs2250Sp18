@@ -147,7 +147,7 @@ void PrintTotal(ShoppingCart cart) {
         // Loop to display PrintItemCost and add to total
         for (int i = 0; i < cart.cartSize; i++) {
             PrintItemCost(cart.cartItems[i]);
-            total += cart.cartItems.itemPrice;
+            total += cart.cartItems[i].itemPrice;
         }
 
         printf("Total: %d\n", total);
