@@ -40,6 +40,7 @@ int main()
     fgets(cartOne.currentDate, sizeof(cartOne.currentDate), stdin);
     cartOne.currentDate[strlen(cartOne.currentDate) - 1] = '\0';
 
+    printf("\n");
     printf("Customer Name: %s\n", cartOne.customerName);
     printf("Today's Date: %s\n", cartOne.currentDate);
     printf("\n");
