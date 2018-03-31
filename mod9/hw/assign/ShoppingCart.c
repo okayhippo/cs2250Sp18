@@ -62,7 +62,7 @@ ShoppingCart RemoveItem(char name[], ShoppingCart cart) {
     // 2) IF you find it, adjust your index in the array
     // cart.cartItems[Index] = cart.cartItems[Index + 1];
     // ELSE print no item
-    for (int i = 0; i < cart->cartSize; i++) {
+    for (int i = 0; i < cart.cartSize; i++) {
 
         if (strcmp(cart.cartItems[i].itemName, name) == 0) {
 
