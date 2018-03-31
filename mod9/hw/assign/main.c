@@ -90,51 +90,53 @@ void PrintMenu(ShoppingCart cart) {
             scanf(" %c", &userChar);
         }
 
+        printf("\n");
 
         // Determine implementation based on userChar
         if (userChar == 'o' || userChar == 'O') {
-                printf("OUTPUT SHOPPING CART\n");
-                PrintTotal(cart);
+            while((userChar = getchar()) != EOF && userChar != '\n');
+            printf("OUTPUT SHOPPING CART\n");
+            PrintTotal(cart);
         }
         else if (userChar == 'i' || userChar == 'I') {
-                printf("OUTPUT ITEMS' DESCRIPTIONS\n");
-                PrintDescriptions(cart);
+            printf("OUTPUT ITEMS' DESCRIPTIONS\n");
+            PrintDescriptions(cart);
         }
         else if (userChar == 'a' || userChar == 'A') {
-                // Create new item and make blank
-                ItemToPurchase item;
-                MakeItemBlank(&item);
-                
+            // Create new item and make blank
+            ItemToPurchase item;
+            MakeItemBlank(&item);
 
-                printf("ADD ITEM TO CART\n");
 
-                // Get item details
-                printf("Enter the item name:\n");
-                getchar();
-                fgets(item.itemName, sizeof(item.itemName), stdin);
-                item.itemName[strlen(item.itemName) - 1] = '\0';
+            printf("ADD ITEM TO CART\n");
 
-                printf("Enter the item description:\n");
-                fgets(item.itemDescription, sizeof(item.itemDescription), stdin);
-                item.itemDescription[strlen(item.itemDescription) - 1] = '\0';
+            // Get item details
+            printf("Enter the item name:\n");
+            getchar();
+            fgets(item.itemName, sizeof(item.itemName), stdin);
+            item.itemName[strlen(item.itemName) - 1] = '\0';
 
-                printf("Enter the item price:\n");
-                scanf("%d", &item.itemPrice);
-                printf("Enter the item quantity:\n");
-                scanf("%d", &item.itemQuantity);
+            printf("Enter the item description:\n");
+            fgets(item.itemDescription, sizeof(item.itemDescription), stdin);
+            item.itemDescription[strlen(item.itemDescription) - 1] = '\0';
+
+            printf("Enter the item price:\n");
+            scanf("%d", &item.itemPrice);
+            printf("Enter the item quantity:\n");
+            scanf("%d", &item.itemQuantity);
         }
         else if (userChar == 'r' || userChar == 'R') {
-                printf("REMOVE ITEM FROM CART\n");
-                printf("Enter name of item to remove:\n");
-                scanf("%s", itemName);
-                RemoveItem(itemName, cart);
+            printf("REMOVE ITEM FROM CART\n");
+            printf("Enter name of item to remove:\n");
+            scanf("%s", itemName);
+            RemoveItem(itemName, cart);
         }
         else if (userChar == 'c' || userChar == 'C') {
-                printf("CHANGE ITEM QUANTITY\n");
-                printf("Enter the item name:\n");
-                scanf("%s", itemName);
-                printf("Enter the new quantity:\n");
-                scanf("%d", &qty);
+            printf("CHANGE ITEM QUANTITY\n");
+            printf("Enter the item name:\n");
+            scanf("%s", itemName);
+            printf("Enter the new quantity:\n");
+            scanf("%d", &qty);
         }
         else if (userChar == 'q' || userChar == 'Q') {
             userChar = 'q';

@@ -154,12 +154,7 @@ int GetCostOfCart(ShoppingCart cart) {
 void PrintTotal(ShoppingCart cart) {
     int total;
 
-    if (cart.cartSize == 0) {
-
-        printf("SHOPPING CART IS EMPTY\n");
-
-    }
-    else {
+    if (cart.cartSize > 0) {
 
         printf("%s's Shopping Cart - %s\n", cart.customerName, cart.currentDate);
         printf("Number of Items: %d\n", GetNumItemsInCart(cart));
@@ -167,13 +162,18 @@ void PrintTotal(ShoppingCart cart) {
 
         // Loop to display PrintItemCost and add to total
         for (int i = 0; i < cart.cartSize; i++) {
-            PrintItemCost(cart.cartItems[i]);
             total += cart.cartItems[i].itemPrice;
         }
 
         printf("Total: %d\n", total);
 
     }
+    else  if (cart.cartSize == 0) {
+
+        printf("SHOPPING CART IS EMPTY\n");
+
+    }
+
 
 }
 
