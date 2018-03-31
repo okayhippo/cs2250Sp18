@@ -171,6 +171,8 @@ void PrintTotal(ShoppingCart cart) {
     else  if (cart.cartSize == 0) {
 
         printf("SHOPPING CART IS EMPTY\n");
+        printf("\n");
+        printf("Total: $0");
 
     }
 
