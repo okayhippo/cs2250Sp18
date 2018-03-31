@@ -36,9 +36,11 @@ ShoppingCart AddItem(ItemToPurchase item, ShoppingCart cart) {
 
         if (cart.cartSize == 0) {
             cart.cartItems[0] = item;
+            cart.cartSize++;
         }
         else if (cart.cartSize > 0) {
             cart.cartItems[cart.cartSize] = item;
+            cart.cartSize++;
         }
 
     return cart;
@@ -121,6 +123,25 @@ ShoppingCart ModifyItem(ItemToPurchase item, ShoppingCart cart) {
 int GetNumItemsInCart(ShoppingCart cart) {
 
     return cart.cartSize;
+
+}
+
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  GetCostOfCart
+ *  Description:  returns total cost of items in cart
+ * =====================================================================================
+ */
+int GetCostOfCart(ShoppingCart cart) {
+    int total = 0;
+
+    for (int i = 0; i < cart.cartSize; i++) {
+
+        total += cart.cartItems[i].itemPrice;
+
+    }
+
+    return total;
 
 }
 

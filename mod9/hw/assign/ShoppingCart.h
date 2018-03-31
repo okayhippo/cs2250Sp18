@@ -34,6 +34,7 @@ ShoppingCart RemoveItem(char[], ShoppingCart);
 ShoppingCart ModifyItem(ItemToPurchase, ShoppingCart);
 
 int GetNumItemsInCart(ShoppingCart);
+int GetCostOfCart(ShoppingCart);
 void PrintTotal(ShoppingCart);
 void PrintDescriptions(ShoppingCart);
 
