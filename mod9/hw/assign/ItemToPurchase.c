@@ -29,12 +29,12 @@
  *  Description:  * Sets itemName, itemQuantity, and itemPrice to "none", 0, 0
  * =====================================================================================
  */
-void MakeItemBlank(ItemToPurchase item) {
+void MakeItemBlank(ItemToPurchase* item) {
 
-    strcpy(item.itemName, "none");
-    strcpy(item.itemDescription, "none");
-    item.itemQuantity = 0;
-    item.itemPrice = 0;
+    strcpy(item->itemName, "none");
+    strcpy(item->itemDescription, "none");
+    item->itemQuantity = 0;
+    item->itemPrice = 0;
     
 }
 
