@@ -24,6 +24,6 @@ typedef struct ContactNode_struct {
 } ContactNode;
 
 ContactNode* CreateContactNode();
-void InsertContactNode();
+void InsertContactAfter();
 ContactNode* GetNextContact();
 void PrintContactNode();

@@ -27,36 +27,67 @@ int main()
     ContactNode* p2 = CreateContactNode();
     ContactNode* p3 = CreateContactNode();
 
+    char name[50];
+    char phoneNum[50];
+
 
     // PERSON 1
     printf("Person 1\nEnter name:\n");
-    fgets(p1->contactName, sizeof(p1->contactName), stdin);
-    p1->contactName[strlen(p1->contactName) - 1] = '\0';      // Remove NULL char
+    fgets(name, sizeof(name), stdin);
+    name[strlen(name) - 1] = '\0';      // Remove NULL char
     printf("Enter phone number:\n");
-    scanf("%s", p1->contactPhoneNum);
-    p1->contactPhoneNum[strlen(p1->contactPhoneNum) - 1] = '\0';
-    printf("You entered: %s, %s\n\n", p1->contactName, p1->contactPhoneNum);
+    scanf("%s", phoneNum);
+    phoneNum[strlen(phoneNum) - 1] = '\0';
+    printf("You entered: %s, %s\n\n", name, phoneNum);
     getchar();
+
+    // Input data
+    strcpy(p1->contactName, name);
+    strcpy(p1->contactPhoneNum, phoneNum);
+
+    // Re-initialize
+    strcpy(name, "");
+    strcpy(phoneNum, "");
+
 
     // PERSON 2
     printf("Person 2\nEnter name:\n");
-    fgets(p2->contactName, sizeof(p2->contactName), stdin);
-    p2->contactName[strlen(p2->contactName) - 1] = '\0';      // Remove NULL char
+    fgets(name, sizeof(name), stdin);
+    name[strlen(name) - 1] = '\0';      // Remove NULL char
     printf("Enter phone number:\n");
-    scanf("%s", p2->contactPhoneNum);
-    p2->contactPhoneNum[strlen(p2->contactPhoneNum) - 1] = '\0';
-    printf("You entered: %s, %s\n\n", p2->contactName, p2->contactPhoneNum);
+    scanf("%s", phoneNum);
+    phoneNum[strlen(phoneNum) - 1] = '\0';
+    printf("You entered: %s, %s\n\n", name, phoneNum);
     getchar();
+
+    // Input data
+    strcpy(p2->contactName, name);
+    strcpy(p2->contactPhoneNum, phoneNum);
+
+    // Insert after
+    InsertContactAfter(p1, p2);
+
+    // Re-initialize
+    strcpy(name,  "");
+    strcpy(phoneNum, "");
+
 
     // PERSON 3
     printf("Person 3\nEnter name:\n");
-    fgets(p3->contactName, sizeof(p3->contactName), stdin);
-    p3->contactName[strlen(p3->contactName) - 1] = '\0';      // Remove NULL char
+    fgets(name, sizeof(name), stdin);
+    name[strlen(name) - 1] = '\0';      // Remove NULL char
     printf("Enter phone number:\n");
-    scanf("%s", p3->contactPhoneNum);
-    p3->contactPhoneNum[strlen(p3->contactPhoneNum) - 1] = '\0';
-    printf("You entered: %s, %s\n\n", p3->contactName, p3->contactPhoneNum);
+    scanf("%s", phoneNum);
+    phoneNum[strlen(phoneNum) - 1] = '\0';
+    printf("You entered: %s, %s\n\n", name, phoneNum);
     getchar();
+
+    // Input data
+    strcpy(p3->contactName, name);
+    strcpy(p3->contactPhoneNum,  phoneNum);
+
+    // Insert after
+    InsertContactAfter(p2, p3);
 
 
     return 0;
