@@ -40,7 +40,7 @@ int main()
 
     cout << "Enter today's date:" << endl;
     getline(cin, date);
-    cart.SetDate();
+    cart.SetDate(date);
     cout << endl;
 
     cout << "Customer name: " << cart.GetCustomerName() << endl;
