@@ -55,9 +55,9 @@ void ShoppingCart::AddItem(ItemToPurchase item) {
 
     cout << "ADD ITEM TO CART" << endl;
     cout << "Enter the item name:" << endl;
-    cin >> name; item.SetName(name);
+    getline(cin, name); item.SetName(name);
     cout << "Enter the item description:" << endl;
-    cin >> desc; item.SetDescription(desc);
+    getline(cin, desc); item.SetDescription(desc);
     cout << "Enter the item price" << endl;
     cin >> price; item.SetPrice(price);
     cout << "Enter the item quantity:" << endl;
@@ -92,11 +92,28 @@ void ShoppingCart::RemoveItem(string name) {
  *  Description:  Modifies an item's values
  * =====================================================================================
  */
-/*
 void ShoppingCart::ModifyItem(ItemToPurchase item) {
+    string name;
+    int qty;
 
+    cout << "CHANGE ITEM QUANTITY" << endl;
+    cout << "Enter the item name:" << endl;
+    getline(cin, name);
+
+    for (int i = 0; i < cartItems.size(); i++) {
+        if (cartItems[i].GetName() == name) {
+            cout << "Enter the new quantity:" << endl;
+            cin >> qty;
+
+            cartItems[i].SetQuantity(qty);
+
+            return;
+        }
+    }
+
+    cout << "Item not found in cart. Nothing modified." << endl;
 }
-*/
+
 
 /* 
  * ===  FUNCTION  ======================================================================
@@ -116,11 +133,11 @@ int ShoppingCart::GetNumItemsInCart() {
  * =====================================================================================
  */
 int ShoppingCart::GetCostofCart() {
-    int total;
+    int total = 0;
 
     // Calculate total
     for (int i = 0; i < cartItems.size(); i++) {
-        total += cartItems[i].GetPrice();
+        total += (cartItems[i].GetPrice() * cartItems[i].GetQuantity());
     }
 
     return total;

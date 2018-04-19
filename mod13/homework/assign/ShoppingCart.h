@@ -41,7 +41,7 @@ class ShoppingCart {
 
         void AddItem(ItemToPurchase);
         void RemoveItem(string);
-        //void ModifyItem(ItemToPurchase);
+        void ModifyItem(ItemToPurchase);
 
         int GetNumItemsInCart();
         int GetCostofCart();

@@ -45,6 +45,7 @@ int main()
 
     cout << "Customer name: " << cart.GetCustomerName() << endl;
     cout << "Today's date: " << cart.GetDate() << endl;
+    cout << endl << endl;
 
     PrintMenu(cart);
 
@@ -63,38 +64,46 @@ int main()
 void PrintMenu(ShoppingCart cart) {
     char userChoice;
 
-    cout << "MENU" << endl;
-    cout << "a - Add item to cart" << endl;
-    cout << "d - Remove item from cart" << endl;
-    cout << "c - Change item quantity" << endl;
-    cout << "i - Output items' descriptions" << endl;
-    cout << "o - Output shopping cart" << endl;
-    cout << "q - Quit" << endl;
-    cout << endl;
+    do {
+        cout << "MENU" << endl;
+        cout << "a - Add item to cart" << endl;
+        cout << "d - Remove item from cart" << endl;
+        cout << "c - Change item quantity" << endl;
+        cout << "i - Output items' descriptions" << endl;
+        cout << "o - Output shopping cart" << endl;
+        cout << "q - Quit" << endl;
+        cout << endl;
 
-    cout << "Choose an option:" << endl;
-    cin >> userChoice;
+        cout << "Choose an option:" << endl;
+        cin >> userChoice;
+        cin.ignore();
 
-    if (userChoice == 'q') {
-        return;
-    }
-    else if (userChoice == 'o') {
-        cart.PrintTotal();
-    }
-    else if (userChoice == 'i') {
-        cart.PrintDescriptions();
-    }
-    else if (userChoice == 'a') {
-        ItemToPurchase item;
-        cart.AddItem(item);
-    }
-    else if (userChoice == 'd') {
-        string name;
+        if (userChoice == 'q') {
+            return;
+        }
+        else if (userChoice == 'o') {
+            cart.PrintTotal();
+        }
+        else if (userChoice == 'i') {
+            cart.PrintDescriptions();
+        }
+        else if (userChoice == 'a') {
+            ItemToPurchase item;
+            cart.AddItem(item);
+        }
+        else if (userChoice == 'd') {
+            string name;
 
-        cout << "REMOVE ITEM FROM CART" << endl;
-        cout << "Enter name of item to remove:" << endl;
-        cin >> name;
+            cout << "REMOVE ITEM FROM CART" << endl;
+            cout << "Enter name of item to remove:" << endl;
+            getline(cin, name);
 
-        cart.RemoveItem(name);
-    }
+            cart.RemoveItem(name);
+        }
+        else if (userChoice == 'c') {
+            ItemToPurchase item;
+
+            cart.ModifyItem(item);
+        }
+    } while (userChoice != 'q');
 }
