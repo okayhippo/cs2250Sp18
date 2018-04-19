@@ -32,6 +32,9 @@ class ItemToPurchase {
     public:
         ItemToPurchase() : itemName("none"), itemDescription("none"),
                            itemPrice(0), itemQuantity(0) {}
+        ItemToPurchase(string name, string desc, int price, int qty) :
+            itemName(name), itemDescription(desc), itemPrice(price),
+            itemQuantity(qty) {}
         
         // Getters & Setters
         void SetName(string name);

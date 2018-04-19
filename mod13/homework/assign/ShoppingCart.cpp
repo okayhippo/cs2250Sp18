@@ -27,14 +27,14 @@ using namespace std;    // For C++
  *  Description:  Mutators and Accessors for private data members
  * =====================================================================================
  */
-void ShoppingCart::SetCustomerName() {
-    cin >> customerName;
+void ShoppingCart::SetCustomerName(string name) {
+    customerName = name;
 }
 string ShoppingCart::GetCustomerName() const {
     return customerName;
 }
-void ShoppingCart::SetDate() {
-    cin >> currentDate;
+void ShoppingCart::SetDate(string date) {
+    currentDate = date;
 }
 string ShoppingCart::GetDate() const {
     return currentDate;

@@ -34,9 +34,9 @@ class ShoppingCart {
         ShoppingCart() : customerName("none"), currentDate("January 1, 2016") {}
         ShoppingCart(string name, string date) : customerName(name), currentDate(date) {}
         
-        void SetCustomerName();
+        void SetCustomerName(string name);
         string GetCustomerName() const;
-        void SetDate();
+        void SetDate(string date);
         string GetDate() const;
 
         void AddItem(ItemToPurchase);

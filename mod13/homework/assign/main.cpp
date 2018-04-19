@@ -31,12 +31,15 @@ int main()
 {
     ShoppingCart cart;
 
-    //string name;
-    //string date;
+    string name;
+    string date;
 
     cout << "Enter customer's name:" << endl;
-    cart.SetCustomerName();
+    getline(cin, name);
+    cart.SetCustomerName(name);
+
     cout << "Enter today's date:" << endl;
+    getline(cin, date);
     cart.SetDate();
     cout << endl;
 
